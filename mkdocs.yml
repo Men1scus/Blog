@@ -1,0 +1,94 @@
+site_name: Meniscus的个人博客
+site_url: https://Meniscus0.github.io/Blog
+site_author: Ziheng Zhang
+site_description: Meniscus的个人网站
+
+theme:
+  name: material
+  language: zh
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+      primary: light blue
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: light blue
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.expand
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - toc.follow
+    # - toc.integrate
+    - navigation.top
+    - header.autohide
+    - navigation.footer
+plugins:
+  - blog
+extra:
+  social:
+    - icon: fontawesome/brands/weixin
+      link: https://raw.githubusercontent.com/Meniscus0/FigureBed/main/img/b7ad74391aab79e44459cca558a34d3.jpg
+      name: Wechat
+    - icon: fontawesome/brands/github
+      link: https://github.com/Meniscus0
+      name: Github
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:zzh_cd@126.com
+      name: Email
+icon:
+  repo: fontawesome/brands/simple/git
+copyright: Copyright &copy; 2023 Ziheng Zhang
+repo_url: https://github.com/Meniscus0/Blog
+repo_name: Meniscus0/Blog
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
