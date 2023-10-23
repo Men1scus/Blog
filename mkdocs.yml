@@ -55,7 +55,7 @@ extra:
     - icon: fontawesome/solid/paper-plane
       link: mailto:zzh_cd@126.com
       name: Email
-icon:
+
   repo: fontawesome/brands/simple/git
 copyright: Copyright &copy; 2023 Ziheng Zhang
 repo_url: https://github.com/Meniscus0/Blog
