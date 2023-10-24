@@ -44,6 +44,7 @@ theme:
     - navigation.footer
 plugins:
   - blog
+  - glightbox
 extra:
   social:
     - icon: fontawesome/brands/weixin
