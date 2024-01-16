@@ -1,7 +1,7 @@
-site_name: Meniscus的个人博客
-site_url: https://Meniscus0.github.io/Blog
+site_name: Men1scus的个人博客
+site_url: https://Men1scus.github.io/Blog
 site_author: Ziheng Zhang
-site_description: Meniscus的个人网站
+site_description: Men1scus的个人网站
 
 theme:
   name: material
@@ -54,16 +54,16 @@ extra:
       link: https://raw.githubusercontent.com/Meniscus0/FigureBed/main/img/b7ad74391aab79e44459cca558a34d3.jpg
       name: Wechat
     - icon: fontawesome/brands/github
-      link: https://github.com/Meniscus0
+      link: https://github.com/Men1scus
       name: Github
     - icon: fontawesome/solid/paper-plane
       link: mailto:zzh_cd@126.com
       name: Email
 
   repo: fontawesome/brands/simple/git
-copyright: Copyright &copy; 2023 Ziheng Zhang
-repo_url: https://github.com/Meniscus0/Blog
-repo_name: Meniscus0/Blog
+copyright: Copyright &copy; 2024 Ziheng Zhang
+repo_url: https://github.com/Men1scus/Blog
+repo_name: Men1scus/Blog
 markdown_extensions:
   # Python Markdown
   - abbr
@@ -80,7 +80,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
-      # smart_enable: all
+      smart_enable: all
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
