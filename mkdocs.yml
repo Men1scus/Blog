@@ -1,7 +1,7 @@
-site_name: Men1scus的个人博客
+site_name: Men1scus
 site_url: https://Men1scus.github.io/Blog
 site_author: Ziheng Zhang
-site_description: Men1scus的个人网站
+site_description: Men1scus
 
 theme:
   name: material
