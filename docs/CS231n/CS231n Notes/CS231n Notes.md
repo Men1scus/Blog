@@ -92,9 +92,9 @@ $f = qz$  $q,z$两个变量互为偏导
 
 ####  链式法则
 
-${\part f \over \part q} = z$	`dfdq = z `
+${\partial f \over \partial q} = z$	`dfdq = z `
 
-${\part f \over \part x} = {\part f \over \part q} {\part q \over \part x}$ 	`dfdx = dfdq * dqdx `
+${\partial f \over \partial x} = {\partial f \over \partial q} {\partial q \over \partial x}$ 	`dfdx = dfdq * dqdx `
 
 ![image-20240118234754222](https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401182347332.png)
 
