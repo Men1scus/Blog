@@ -450,6 +450,8 @@
       
         
       
+        
+      
     
     
     
@@ -462,11 +464,11 @@
         
   
   
-    <a href="../../../CS231n/CS231n%20Notes/CS231n%20Notes/" class="md-nav__link">
+    <a href="../../../CS231n/CS231n/CS231n%20Notes/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    CS231n Notes
+    CS231n
   </span>
   
 
@@ -1155,6 +1157,148 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#git_4" class="md-nav__link">
+    第五章 Git 内部原理
+  </a>
+  
+    <nav class="md-nav" aria-label="第五章 Git 内部原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectes" class="md-nav__link">
+    objectes 对象储存
+  </a>
+  
+    <nav class="md-nav" aria-label="objectes 对象储存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-cat-file-t" class="md-nav__link">
+    git cat-file -t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-cat-file-t_1" class="md-nav__link">
+    git cat-file -t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    objects目录
+  </a>
+  
+    <nav class="md-nav" aria-label="objects目录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-gc" class="md-nav__link">
+    git gc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refs" class="md-nav__link">
+    refs目录—— 引用
+  </a>
+  
+    <nav class="md-nav" aria-label="refs目录—— 引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-tag-a-v10" class="md-nav__link">
+    git tag -a v1.0 
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    HEAD 引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remotes" class="md-nav__link">
+    remotes 引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags 引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stash" class="md-nav__link">
+    stash
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config文件 —— 引用规范
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    config文件 —— 环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="config文件 —— 环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-config" class="md-nav__link">
+    git config
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitflow" class="md-nav__link">
+    第六章 GitFlow工作流实战
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1611,6 +1755,148 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#git_4" class="md-nav__link">
+    第五章 Git 内部原理
+  </a>
+  
+    <nav class="md-nav" aria-label="第五章 Git 内部原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectes" class="md-nav__link">
+    objectes 对象储存
+  </a>
+  
+    <nav class="md-nav" aria-label="objectes 对象储存">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-cat-file-t" class="md-nav__link">
+    git cat-file -t
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-cat-file-t_1" class="md-nav__link">
+    git cat-file -t
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects" class="md-nav__link">
+    objects目录
+  </a>
+  
+    <nav class="md-nav" aria-label="objects目录">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-gc" class="md-nav__link">
+    git gc
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#refs" class="md-nav__link">
+    refs目录—— 引用
+  </a>
+  
+    <nav class="md-nav" aria-label="refs目录—— 引用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-tag-a-v10" class="md-nav__link">
+    git tag -a v1.0 
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    HEAD 引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remotes" class="md-nav__link">
+    remotes 引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    tags 引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stash" class="md-nav__link">
+    stash
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config" class="md-nav__link">
+    config文件 —— 引用规范
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#config_1" class="md-nav__link">
+    config文件 —— 环境变量
+  </a>
+  
+    <nav class="md-nav" aria-label="config文件 —— 环境变量">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-config" class="md-nav__link">
+    git config
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitflow" class="md-nav__link">
+    第六章 GitFlow工作流实战
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1734,6 +2020,65 @@
 <p>暂存哪个文件</p>
 <h4 id="3">3<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <p>取消暂存</p>
+<h2 id="git_4">第五章 Git 内部原理<a class="headerlink" href="#git_4" title="Permanent link">&para;</a></h2>
+<p><code>.git</code>隐藏目录</p>
+<h3 id="objectes">objectes 对象储存<a class="headerlink" href="#objectes" title="Permanent link">&para;</a></h3>
+<p>三个对象：</p>
+<ul>
+<li>数据</li>
+<li>树</li>
+<li>提交</li>
+</ul>
+<p>SHA-1 哈希值：校验和</p>
+<p>40位</p>
+<p>校验和前两位命名子目录，后38位命名文件名</p>
+<p>子目录/文件名</p>
+<h4 id="git-cat-file-t">git cat-file -t<a class="headerlink" href="#git-cat-file-t" title="Permanent link">&para;</a></h4>
+<p>查看类型</p>
+<h4 id="git-cat-file-t_1">git cat-file -t<a class="headerlink" href="#git-cat-file-t_1" title="Permanent link">&para;</a></h4>
+<p>查看内容</p>
+<h3 id="objects">objects目录<a class="headerlink" href="#objects" title="Permanent link">&para;</a></h3>
+<p>省地，增效，多个对象打包成 “包文件” <code>.pack</code></p>
+<h4 id="git-gc">git gc<a class="headerlink" href="#git-gc" title="Permanent link">&para;</a></h4>
+<p>手动打包松散的对象</p>
+<p>索引文件 <code>.idx</code></p>
+<h3 id="refs">refs目录—— 引用<a class="headerlink" href="#refs" title="Permanent link">&para;</a></h3>
+<p>引用类型</p>
+<ul>
+<li>heads</li>
+<li>remotes</li>
+<li>tags</li>
+</ul>
+<h4 id="git-tag-a-v10">git tag -a v1.0 <commitId><a class="headerlink" href="#git-tag-a-v10" title="Permanent link">&para;</a></h4>
+<p>基于commit打tag</p>
+<h4 id="head">HEAD 引用<a class="headerlink" href="#head" title="Permanent link">&para;</a></h4>
+<ul>
+<li>分支级别</li>
+<li>代码库级别</li>
+</ul>
+<h4 id="remotes">remotes 引用<a class="headerlink" href="#remotes" title="Permanent link">&para;</a></h4>
+<p>远程仓库分支最后一次提交</p>
+<h4 id="tags">tags 引用<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h4>
+<p>发布版本管理</p>
+<h4 id="stash">stash<a class="headerlink" href="#stash" title="Permanent link">&para;</a></h4>
+<p>暂存当前修改</p>
+<h3 id="config">config文件 —— 引用规范<a class="headerlink" href="#config" title="Permanent link">&para;</a></h3>
+<p>由<code>git remote add origin</code> 生成</p>
+<h3 id="config_1">config文件 —— 环境变量<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h3>
+<h4 id="git-config">git config<a class="headerlink" href="#git-config" title="Permanent link">&para;</a></h4>
+<ol>
+<li>系统变量</li>
+</ol>
+<p>--system</p>
+<ol>
+<li>用户变量</li>
+</ol>
+<p>--global</p>
+<ol>
+<li>本地项目变量</li>
+</ol>
+<p>​   --local</p>
+<h2 id="gitflow">第六章 GitFlow工作流实战<a class="headerlink" href="#gitflow" title="Permanent link">&para;</a></h2>
 
 
 

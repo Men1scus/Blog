@@ -192,3 +192,101 @@ i is for interactive
 
 取消暂存
 
+
+
+## 第五章 Git 内部原理
+
+`.git`隐藏目录
+
+### objectes 对象储存
+
+三个对象：
+
+* 数据
+* 树
+* 提交
+
+SHA-1 哈希值：校验和
+
+40位
+
+校验和前两位命名子目录，后38位命名文件名
+
+子目录/文件名
+
+#### git cat-file -t
+
+查看类型
+
+#### git cat-file -t
+
+查看内容
+
+
+
+### objects目录
+
+省地，增效，多个对象打包成 “包文件” `.pack`
+
+####  git gc
+
+手动打包松散的对象
+
+索引文件 `.idx`
+
+
+
+###  refs目录—— 引用
+
+引用类型
+
+* heads
+* remotes
+* tags
+
+#### git tag -a v1.0 <commitId>
+
+基于commit打tag
+
+#### HEAD 引用
+
+* 分支级别
+* 代码库级别
+
+#### remotes 引用
+
+远程仓库分支最后一次提交
+
+#### tags 引用
+
+发布版本管理
+
+#### stash
+
+暂存当前修改
+
+### config文件 —— 引用规范
+
+由`git remote add origin` 生成
+
+
+
+### config文件 —— 环境变量
+
+#### git config
+
+1. 系统变量
+
+   --system
+
+2. 用户变量
+
+   --global
+
+3. 本地项目变量
+
+​	--local
+
+
+
+## 第六章 GitFlow工作流实战

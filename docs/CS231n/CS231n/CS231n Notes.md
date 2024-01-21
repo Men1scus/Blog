@@ -179,3 +179,69 @@ $W_2$ 模板总的加权和，普遍得分高的那匹马
 传递到每个结点，先进行激活再往后传
 
 $max(0,-)$ 逐元素应用 非线性函数 
+
+### Fully Connected Layer
+
+把输入拉伸成长条，权重左乘输入，再进行激活
+
+### Convolution  Layer
+
+![image-20240119155805055](https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401191558211.png)
+
+和图像相同厚度但面积很小的 Filter 在图像上滑动，计算每个位置的dot products 
+
+计算方法：将图像的75个点和Filter 的75个点进行对位相乘求和，也就是1 x 75 的矩阵乘75 x 1 的矩阵，得到一个数值。
+
+有多少总 Filters 下一步的输出的层数就是多少
+
+Output size:	${(N - F)\over stride} + 1$
+
+Filter aka receptive field
+
+### Pooling layer
+
+降低采样率
+
+每层进行映射，层数不变，厚度不变
+
+对激活后的层进行将采样
+
+
+
+## Lecture 6: Training Neural Networks,Part I
+
+### Activation Functions
+
+#### Sigmoid
+
+压缩到  [0,1]
+
+浓度不能太高
+
+输出不关于0对称
+
+指数计算耗费资源
+
+#### tanh(x)
+
+压缩到  [-1,1]
+
+关于原点对称
+
+浓度饱和会杀死梯度
+
+#### ReLU
+
+不会饱和
+
+效率高
+
+收敛速度快
+
+比 Sigmoid 更符合生理学结构
+
+第一象限会保持激活
+
+第四象限永远不会激活
+
+#### Leaky ReLU

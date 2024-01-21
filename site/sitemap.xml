@@ -2,52 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://Men1scus.github.io/Blog/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/CS231n/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://Men1scus.github.io/Blog/CS231n/CS231n%20Notes/CS231n%20Notes/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <loc>https://Men1scus.github.io/Blog/CS231n/CS231n/CS231n%20Notes/</loc>
+         <lastmod>2024-01-21</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://Men1scus.github.io/Blog/CS231n/CS231n/CS231n_%20Assignment1/</loc>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/Miscellaneous/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/Miscellaneous/%E8%BD%AC%E8%BD%BD/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/Spring%2023-24/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/Spring%2023-24/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%AF%BC%E8%AE%BA%20Notes/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/Toolkit/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/Toolkit/Git/faster-git/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://Men1scus.github.io/Blog/blog/</loc>
-         <lastmod>2024-01-18</lastmod>
+         <lastmod>2024-01-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
