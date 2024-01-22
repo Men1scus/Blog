@@ -46,12 +46,14 @@ $L$ 的梯度是包含所有偏导的**向量**
 
 $W$ 中的每一项对 $L$ 影响的大小所构成的矩阵
 $$
+\begin{gather}
 L_i = \sum\limits_{j\neq y_i} max(0,s_j - s_{y_i} + 1)
-\newline
+\\ \\
 if \ s_{y_i}  \geq s_j + 1 :
-\newline
+\\ \\
 L_i = \sum\limits_{j \neq y_i } s_j - s_{y_i} + 1 = \sum\limits_{j \neq y_i } X_iW_j - X_iW_{y_j} + 1
-\newline
+\\ 
+\end{gather}
 $$
 
 
