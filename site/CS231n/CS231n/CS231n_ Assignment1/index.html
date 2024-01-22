@@ -588,8 +588,36 @@
     Naive
   </a>
   
-    <nav class="md-nav" aria-label="Naive">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    Optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluates-the-numerical-gradient" class="md-nav__link">
+    Evaluates the numerical gradient
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluates the numerical gradient">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centered-difference-formula" class="md-nav__link">
+    centered difference formula
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relative-error" class="md-nav__link">
+    Relative Error
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#regularization" class="md-nav__link">
@@ -1086,8 +1114,36 @@
     Naive
   </a>
   
-    <nav class="md-nav" aria-label="Naive">
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    Optimization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluates-the-numerical-gradient" class="md-nav__link">
+    Evaluates the numerical gradient
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluates the numerical gradient">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#centered-difference-formula" class="md-nav__link">
+    centered difference formula
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relative-error" class="md-nav__link">
+    Relative Error
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#regularization" class="md-nav__link">
@@ -1140,7 +1196,7 @@ $$
 \Vert A \Vert = \sqrt{\sum\limits_{i,j} A^2_{i,j}}
 $$</p>
 <p>逐元素平方和，再开根号</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>np.linalg.norm(，ord = &#39;fro&#39;)
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="err">，</span><span class="nb">ord</span> <span class="o">=</span> <span class="s1">&#39;fro&#39;</span><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <p>lin alg —— linear algebra</p>
 <h2 id="svm">SVM<a class="headerlink" href="#svm" title="Permanent link">&para;</a></h2>
@@ -1152,22 +1208,110 @@ L_i = \sum\limits_{j\neq y_i} max(0,s_j - s_{y_i} + 1)
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
 <span class="normal"><a href="#__codelineno-1-4">4</a></span>
-<span class="normal"><a href="#__codelineno-1-5">5</a></span>
-<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">loss</span> <span class="o">=</span> <span class="mf">0.0</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="err">……</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1"># margin 值为正时才累加，否则不用加，因为最小值一定不小于0</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="n">margin</span> <span class="o">=</span> <span class="n">score</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">scores</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="k">if</span> <span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>    <span class="n">loss</span> <span class="o">+=</span> <span class="n">margin</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="n">margin</span> <span class="o">=</span> <span class="n">score</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">scores</span><span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">if</span> <span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>    <span class="n">loss</span> <span class="o">+=</span> <span class="n">margin</span>
+</span></code></pre></div></td></tr></table></div>
+<h3 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">&para;</a></h3>
+<p><span class="arithmatex">\(L\)</span> 的梯度是包含所有偏导的**向量**</p>
+<p><span class="arithmatex">\(W\)</span> 中的每一项对 <span class="arithmatex">\(L\)</span> 影响的大小所构成的矩阵
+$$
+L_i = \sum\limits_{j\neq y_i} max(0,s_j - s_{y_i} + 1)
+\newline
+if  s_{y_i}  \geq s_j + 1 :
+\newline
+L_i = \sum\limits_{j \neq y_i } s_j - s_{y_i} + 1 = \sum\limits_{j \neq y_i } X_iW_j - X_iW_{y_j} + 1
+\newline
+$$</p>
+<p><a class="glightbox" href="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222000951.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222000951.png" alt="image-20240122200000817"  /></a>
+$$
+if j \neq y_i
+\newline
+L_i(W) =  X_iW_j + ……  =  \sum\limits_{k=1}^{3072} x_{i,k} w_{k,j}+……
+\newline
+{\partial L_i(W) \over \partial w_{t,j} } =   {\partial \over \partial w_{t,j} } \sum\limits_{k=1}^{3072}  {x_{i,k} w_{k,j}} = {\partial \over \partial w_{t,j}}( x_{i,1}w_{1,j} + x_{i,2}w_{2,j} + …… + x_{i,t}w_{t,j} + …… +x_{i,3072}w_{3072,j} )
+\newline
+=x_{i,t}
+$$
+<a class="glightbox" href="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222124092.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222124092.png" alt="image-20240122212403960"  /></a></p>
+<p><em>From this we can easily see that</em> 
+$$
+\nabla_{W_j} L_i(W) = \nabla_{W_j}X_iW_j = X_i^T
+$$
+<em>Mutatis mutandis</em>
+$$
+\nabla_{W_{y_j}} L_i(W) = \nabla_{W_{y_j}}(-X_iW_{y_i}) = -X_i^T
+$$</p>
+<div class="arithmatex">\[
+\nabla_W L(W)
+\newline
+\nabla_{W_j} L_i(W) = X_i^T (j \neq y_i)
+\newline
+\nabla_{W_{y_j}} L_i(W) = -X_i^T
+\]</div>
+<h3 id="evaluates-the-numerical-gradient">Evaluates the numerical gradient<a class="headerlink" href="#evaluates-the-numerical-gradient" title="Permanent link">&para;</a></h3>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">loss</span><span class="p">,</span> <span class="n">grad</span> <span class="o">=</span> <span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">X_dev</span><span class="p">,</span> <span class="n">y_dev</span><span class="p">,</span> <span class="mf">5e1</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">svm_loss_naive</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">X_dev</span><span class="p">,</span> <span class="n">y_dev</span><span class="p">,</span> <span class="mf">5e1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="c1"># 只接收一个参数 w 。本应该返回 (loss, dW) 的元组，[0] 只返回 loss </span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">grad_numerical</span> <span class="o">=</span> <span class="n">grad_check_sparse</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">grad</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="centered-difference-formula"><strong>centered difference formula</strong><a class="headerlink" href="#centered-difference-formula" title="Permanent link">&para;</a></h4>
+<p>差分法计算数值梯度
+$$
+{\partial L(W) \over \partial w_{i,j}} \approx {L(w_{i,j}+h) - L(w_{i,j}-h) \over 2h}
+$$</p>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">oldval</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">oldval</span> <span class="o">+</span> <span class="n">h</span>  <span class="c1"># increment by h</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">fxph</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># evaluate f(x + h)</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1"># f(x) 也就是 f(W) 也就是求 W 关于X_dev 的loss</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">oldval</span> <span class="o">-</span> <span class="n">h</span>  <span class="c1"># increment by h</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="n">fxmh</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># evaluate f(x - h)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="n">x</span><span class="p">[</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">oldval</span>  <span class="c1"># reset</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="n">grad_numerical</span> <span class="o">=</span> <span class="p">(</span><span class="n">fxph</span> <span class="o">-</span> <span class="n">fxmh</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="relative-error">Relative Error<a class="headerlink" href="#relative-error" title="Permanent link">&para;</a></h4>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="n">rel_error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">grad_numerical</span> <span class="o">-</span> <span class="n">grad_analytic</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a>            <span class="nb">abs</span><span class="p">(</span><span class="n">grad_numerical</span><span class="p">)</span> <span class="o">+</span> <span class="nb">abs</span><span class="p">(</span><span class="n">grad_analytic</span><span class="p">)</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a>        <span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <h4 id="regularization">Regularization<a class="headerlink" href="#regularization" title="Permanent link">&para;</a></h4>
 <div class="arithmatex">\[
-L(W) = {1\over N} \sum\limits^N_{i=1} L_i + \lambda R(W)    \\
+L(W) = {1 \over N} \sum\limits^N_{i=1} L_i + \lambda R(W)
+\newline
 R(W) = \sum\limits_k \sum\limits_l W^2_{k,l}
 \]</div>
-<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">loss</span> <span class="o">/=</span> <span class="n">num_train</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">loss</span> <span class="o">+=</span> <span class="n">reg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span><span class="o">*</span><span class="n">W</span><span class="p">)</span> <span class="c1"># element-wise multiplication</span>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="n">loss</span> <span class="o">/=</span> <span class="n">num_train</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="n">loss</span> <span class="o">+=</span> <span class="n">reg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">W</span><span class="o">*</span><span class="n">W</span><span class="p">)</span> <span class="c1"># element-wise multiplication</span>
+</span></code></pre></div></td></tr></table></div>
+<div class="arithmatex">\[
+\nabla_W\ \lambda R(W) = 2 * \lambda \ W
+\]</div>
+<div class="language-python highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">dW</span> <span class="o">/=</span> <span class="n">num_train</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">dW</span> <span class="o">+=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">reg</span> <span class="o">*</span> <span class="n">W</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="vectorized">Vectorized<a class="headerlink" href="#vectorized" title="Permanent link">&para;</a></h3>
 
