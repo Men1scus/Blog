@@ -46,25 +46,32 @@ $L$ 的梯度是包含所有偏导的**向量**
 
 $W$ 中的每一项对 $L$ 影响的大小所构成的矩阵
 $$
-\begin{aligned}
 L_i = \sum\limits_{j\neq y_i} max(0,s_j - s_{y_i} + 1)
-\\\\
-if \ s_{y_i}  \geq s_j + 1 :
-\\\\
-L_i = \sum\limits_{j \neq y_i } s_j - s_{y_i} + 1 = \sum\limits_{j \neq y_i } X_iW_j - X_iW_{y_j} + 1
-\\ 
-\end{aligned}
 $$
 
+$$
+if \ s_{y_i}  \geq s_j + 1 :
+$$
+
+$$
+L_i = \sum\limits_{j \neq y_i } s_j - s_{y_i} + 1 = \sum\limits_{j \neq y_i } X_iW_j - X_iW_{y_j} + 1
+$$
 
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222000951.png" alt="image-20240122200000817"  />
 $$
-if\ j \neq y_i
-\\\\
+if\ j \neq y_i :
+$$
+
+$$
 L_i(W) =  X_iW_j\ + ……  = \ \sum\limits_{k=1}^{3072} x_{i,k} w_{k,j}+……
-\\\\
+$$
+
+$$
 {\partial L_i(W) \over \partial w_{t,j} } =  \ {\partial\ \over \partial w_{t,j} } \sum\limits_{k=1}^{3072}  {x_{i,k} w_{k,j}} = {\partial\ \over \partial w_{t,j}}(\ x_{i,1}w_{1,j} + x_{i,2}w_{2,j} + …… + x_{i,t}w_{t,j} + …… +x_{i,3072}w_{3072,j}\ )
-\\\\
+$$
+
+
+$$
 =x_{i,t}
 $$
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222124092.png" alt="image-20240122212403960"  />
@@ -78,13 +85,22 @@ $$
 \nabla_{W_{y_j}} L_i(W) = \nabla_{W_{y_j}}(-X_iW_{y_i}) = -X_i^T
 $$
 
+
+
+
 $$
 \nabla_W L(W)
-\newline
+$$
+
+$$
 \nabla_{W_j} L_i(W) = X_i^T (j \neq y_i)
-\newline
+$$
+
+$$
 \nabla_{W_{y_j}} L_i(W) = -X_i^T
 $$
+
+
 
 
 
@@ -140,7 +156,9 @@ rel_error = abs(grad_numerical - grad_analytic) / (
 
 $$
 L(W) = {1 \over N} \sum\limits^N_{i=1} L_i + \lambda R(W)
-\newline
+$$
+
+$$
 R(W) = \sum\limits_k \sum\limits_l W^2_{k,l}
 $$
 
