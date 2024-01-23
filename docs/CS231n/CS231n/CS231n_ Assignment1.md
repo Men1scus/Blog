@@ -154,6 +154,7 @@ rel_error = abs(grad_numerical - grad_analytic) / (
 #### Regularization
 
 
+
 $$
 L(W) = {1 \over N} \sum\limits^N_{i=1} L_i + \lambda R(W)
 $$
@@ -173,10 +174,43 @@ $$
 \nabla_W\ \lambda R(W) = 2 * \lambda \ W
 $$
 
+
+
 ```python
 dW /= num_train
 dW += 2 * reg * W
 ```
 
+**Why regularization ?**
+
+**Prevent the model from doing too well on training data**
+
+<img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231920079.png" alt="image-20240123192012964" style="zoom:67%;" />
+
+```python
+# loss += reg * np.sum(W*W) 
+```
+
+<img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231914041.png" alt="image-20240123191422954" style="zoom: 67%;" />
+
+```python
+# dW += 2 * reg * W
+```
+
+<img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231917481.png" alt="image-20240123191725384" style="zoom:67%;" />
+
+```python
+# loss += reg * np.sum(W*W) 
+# dW += 2 * reg * W
+```
+
+<img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231915965.png" alt="image-20240123191555866" style="zoom:67%;" />
+
 ### Vectorized
+
+
+
+### Stochastic Gradient Descent
+
+
 
