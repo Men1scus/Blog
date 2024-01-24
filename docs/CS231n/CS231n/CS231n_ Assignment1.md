@@ -1,5 +1,7 @@
 # CS231n Assignment1
 
+
+
 ## K-Nearest-Neighbor
 
 ### Frobenius norm
@@ -18,9 +20,10 @@ $$
 np.linalg.norm(，ord = 'fro')
 ```
 
+
 lin alg —— linear algebra
 
-## SVM
+## Support Vector Machine
 
 $$
 L_i = \sum\limits_{j\neq y_i} max(0,s_j - s_{y_i} + 1)
@@ -54,38 +57,39 @@ if \ s_{y_i}  \geq s_j + 1 :
 $$
 
 $$
-L_i = \sum\limits_{j \neq y_i } s_j - s_{y_i} + 1 = \sum\limits_{j \neq y_i } X_iW_j - X_iW_{y_j} + 1
+L_i = \sum\limits_{j \neq y_i }( s_j - s_{y_i} + 1) = \sum\limits_{j \neq y_i } (X_iW_j - X_iW_{y_j} + 1)
 $$
 
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222000951.png" alt="image-20240122200000817"  />
-$$
-if\ j \neq y_i :
-$$
-
-$$
-L_i(W) =  X_iW_j\ + ……  = \ \sum\limits_{k=1}^{3072} x_{i,k} w_{k,j}+……
-$$
-
-$$
-{\partial L_i(W) \over \partial w_{t,j} } =  \ {\partial\ \over \partial w_{t,j} } \sum\limits_{k=1}^{3072}  {x_{i,k} w_{k,j}} = {\partial\ \over \partial w_{t,j}}(\ x_{i,1}w_{1,j} + x_{i,2}w_{2,j} + …… + x_{i,t}w_{t,j} + …… +x_{i,3072}w_{3072,j}\ )
-$$
 
 
 $$
-=x_{i,t}
+L_i(W) = \sum\limits_{j \neq y_i } X_iW_j\ + ……  = \ \sum\limits_{j \neq y_i }\sum\limits_{k=1}^{3072} x_{i,k} w_{k,j}+……
+$$
+
+$$
+{\partial L_i(W) \over \partial w_{t,j} }
+= \sum\limits_{j \neq y_i } \ {\partial\ \over \partial w_{t,j} } \sum\limits_{k=1}^{3072}  {x_{i,k} w_{k,j}} 
+= \sum\limits_{j \neq y_i }{\partial\ \over \partial w_{t,j}}(\ x_{i,1}w_{1,j} + x_{i,2}w_{2,j} + …… + x_{i,t}w_{t,j} + …… +x_{i,3072}w_{3072,j}\ )
+$$
+
+
+$$
+=\sum\limits_{j \neq y_i }x_{i,t}
 $$
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401222124092.png" alt="image-20240122212403960"  />
 
 *From this we can easily see that* 
 $$
-\nabla_{W_j} L_i(W) = \nabla_{W_j}X_iW_j = X_i^T
+\nabla_{W_j} L_i(W) 
+= \nabla_{W_j}\sum\limits_{j \neq y_i } X_iW_j 
+= \sum\limits_{j \neq y_i } \nabla_{W_j} X_iW_j 
+= \sum\limits_{j \neq y_i } X_i^T
 $$
 *Mutatis mutandis*
 $$
-\nabla_{W_{y_j}} L_i(W) = \nabla_{W_{y_j}}(-X_iW_{y_i}) = -X_i^T
+\nabla_{W_{y_i}} L_i(W) = \nabla_{W_{y_i}}\sum\limits_{j \neq y_i }(-X_iW_{y_i}) = \sum\limits_{j \neq y_i }-X_i^T
 $$
-
-
 
 
 $$
@@ -93,17 +97,23 @@ $$
 $$
 
 $$
-\nabla_{W_j} L_i(W) = X_i^T (j \neq y_i)
+\nabla_{W_j} L_i(W) = \sum\limits_{j \neq y_i } X_i^T 
 $$
 
+```python
+ dW[:,j] += X[i].T
+```
+
+
 $$
-\nabla_{W_{y_j}} L_i(W) = -X_i^T
+\nabla_{W_{y_i}} L_i(W) = \sum\limits_{j \neq y_i }(-X_i^T)
 $$
 
 
 
-
-
+```python
+dW[:,y[i]] += -X[i].T 
+```
 
 
 
@@ -159,6 +169,7 @@ $$
 L(W) = {1 \over N} \sum\limits^N_{i=1} L_i + \lambda R(W)
 $$
 
+
 $$
 R(W) = \sum\limits_k \sum\limits_l W^2_{k,l}
 $$
@@ -185,22 +196,42 @@ dW += 2 * reg * W
 
 **Prevent the model from doing too well on training data**
 
+```python
+loss /= num_train
+loss += reg * np.sum(W*W) 
+
+dW /= num_train
+dW += 2 * reg * W
+```
+
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231920079.png" alt="image-20240123192012964" style="zoom:67%;" />
 
 ```python
+loss /= num_train
 # loss += reg * np.sum(W*W) 
+# 无实际意义
+dW /= num_train
+dW += 2 * reg * W
 ```
 
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231914041.png" alt="image-20240123191422954" style="zoom: 67%;" />
 
 ```python
+loss /= num_train
+loss += reg * np.sum(W*W) 
+
+dW /= num_train
 # dW += 2 * reg * W
+# 无实际意义
 ```
 
 <img src="https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401231917481.png" alt="image-20240123191725384" style="zoom:67%;" />
 
 ```python
+loss /= num_train
 # loss += reg * np.sum(W*W) 
+
+dW /= num_train
 # dW += 2 * reg * W
 ```
 
@@ -208,9 +239,264 @@ dW += 2 * reg * W
 
 ### Vectorized
 
+$$
+L_i = \sum\limits_{j\neq y_i} max(0,s_j - s_{y_i} + 1)
+$$
+
+$$
+L(W) = {1 \over N} \sum\limits^N_{i=1} L_i + \lambda R(W)
+$$
+
+margins 矩阵中第 $i$ 行 第 $j$ 列的数值为： 
+$$
+max(0,s_{i,j} - s_{i,y_i} + 1)
+$$
+
+```python
+scores -= correct_class_score
+scores += 1
+margin = np.maximum(scores, np.zeros((num_train, num_classes)))
+```
+
+margins 矩阵中第 $i$ 行 第 $y_i$​​ 列均为0
+
+```python
+margin[np.arange(num_train), y] = 0
+```
+
+loss 正则化之前本质上是 margins 矩阵中所有位置的和（两个 $\sum$​ 遍历整个矩阵）
+
+```python
+loss = np.sum(margin)
+```
+
+$$
+\nabla_{W_j} L_i(W) = \sum\limits_{j \neq y_i }X_i^T
+$$
+
+$$
+\nabla_{W_{y_j}} L_i(W) = \sum\limits_{j \neq y_i } -X_i^T
+$$
+
+
+
+权重矩阵的 10 列中,第 `y[i]`列对于分数矩阵中第 $i$ 行的影响是 $-X_i^T$ 
+
+其余列对于分数矩阵中第 $i$ 行的损失值的影响都是 $X_i^T$​
+
+`dW` 中的（i，j）反映了权重矩阵 $W$ 的第 j 类这一列对于 第 i 张图片损失值的影响
+
+目前已经有大小为 [3073 x 500] 的 $X^T$​ ,可以通过 [500 x 10] 的`margins`矩阵转变为 [3073 x 10] 的`dW`
+
+ margin 的第一行可以把 $X^T$ 的第一列 $X_1^T$ 中的第一个元素 $x_{1,1}$​ 作用到 `dW` 的第一行中除第 $y_1$ 个元素
+
+只要不配对，错误梯度会增加，正确的梯度会减小，训练的时候会减去学习率乘梯度，正确的权重减小得慢或者变大
+
 
 
 ### Stochastic Gradient Descent
+
+
+
+## Softmax
+
+$$
+L_i = -\ln({e^{s_{y_i}} \over \sum\limits_j e^{s_j}})
+$$
+
+$$
+L = {1 \over N} \sum\limits^N_{i=1} L_i \ + R(W)
+$$
+
+
+
+### Data preprocessing
+
+1. 删除旧值，加载数据
+2. 划分各个集合的大小
+3. 通过 `list(range())` 生成下标的列表 mask
+4.  mask 切割集合
+5. 将图片拉伸成长条
+6. 所有训练集减去均值
+7. 右侧水平拼接一列 1，用来接收偏置项
+8. 打印出各个集合的 shape
+
+### Gradient
+
+#### Numeric instability
+
+Dividing large numbers can be numerically unstable.
+
+
+$$
+\log \ C = -\ max(S)
+$$
+
+$$
+{e^{s_{y_i}} \over \sum\limits_j e^{s_j}} 
+= {Ce^{s_{y_i}} \over C\sum\limits_j e^{s_j}}
+= {e^{s_{y_i}+\log\ C} \over \sum\limits_j e^{s_j + \log \ C}}
+$$
+
+
+```python
+max_value = max(scores)
+	for j in range(num_classes):
+		scores[j] -= max_value
+```
+
+
+$$
+L_i = -\ln({e^{s_{y_i}} \over \sum\limits_j e^{s_j}}) = -s_{y_i} + ln ({\sum\limits_j e^{s_j}})
+$$
+
+$$
+= - X_iW_{y_i} + ln ({\sum\limits_{j=0}^9 e^{X_iW_j}})
+$$
+
+$$
+e^{X_iW_j} = e^{\sum\limits^{3072}_{k=0}x_{i,k}\ w_{k,j}} = \prod_{k=0}^{3072} e^{x_{i,k}\ w_{k,j}}
+$$
+
+$$
+=e^{x_{i,1}w_{1,j}} \cdot e^{x_{i,2}w_{2,j}} \cdot  …… \cdot e^{x_{i,t}w_{t,j}} \cdot …… \cdot e^{x_{i,3073}w_{3073,j}}
+$$
+
+
+
+
+
+
+
+$$
+if\ j = y_i:
+$$
+
+$$
+\text{want} \ \nabla_{W_{y_i}}\ L_i(W)
+$$
+
+$$
+e^{X_iW_{y_i}} = e^{\sum\limits^{3072}_{k=0}x_{i,k}\ w_{k,y_i}} = \prod_{k=0}^{3072} e^{x_{i,k}\ w_{k,y_i}}
+$$
+
+$$
+=e^{x_{i,1}w_{1,y_i}} \cdot e^{x_{i,2}w_{2,y_i}} \cdot  …… \cdot e^{x_{i,t}w_{t,y_i}} \cdot …… \cdot e^{x_{i,3073}w_{3073,y_i}}
+$$
+
+$$
+{\partial L_i(W) \over \partial w_{t,y_i} } 
+
+= -{\partial \ {{X_iW_{y_i}}}\over \partial w_{t,y_i} }
++ 
+{1 \over {\sum\limits_{j=0}^9 e^{X_iW_j}}} 
+\cdot 
+{\partial {\sum\limits_{j=0}^9 e^{X_iW_j}}\over \partial w_{t,y_i} } 
+
+=-{\partial \ {{X_iW_{y_i}}}\over \partial w_{t,y_i} }
++
+{\partial \ {e^{X_iW_{y_i}}}\over \partial w_{t,y_i} }
+\cdot 
+{1 \over {\sum\limits_{j=0}^9 e^{X_iW_j}}} 
+$$
+
+
+
+*Mutatis mutandis*
+$$
+= -x_{i,t} + {{x_{i,t} \cdot e^{X_iW_{y_i}} } \over {\sum\limits_{j=0}^9 e^{X_iW_j}}}
+$$
+
+$$
+= x_{i,t}
+\cdot
+(-1 
++
+{e^{X_iW_{y_i}} 
+\over 
+{\sum\limits_{j=0}^9 e^{X_iW_j}}})
+$$
+
+$$
+\nabla_{W_{y_i}}\ L_i(W) 
+= 
+X_{i}^T
+\cdot
+( - 1 
++
+{e^{X_iW_{y_i}} 
+\over 
+{\sum\limits_{j=0}^9 e^{X_iW_j}}} )
+$$
+
+```python
+for j in range(num_classes):
+    if j == y[i]:
+        dW[:, y[i]] += X[i].T * (-np.exp(scores[y[i]]) + softmax_value)
+        
+```
+
+
+$$
+if\ j \neq y_i:
+$$
+
+$$
+\text{want} \ \nabla_{W_j}\ L_i(W)
+$$
+
+想得到 $W$ 的第 $j$ 列对损失函数第 $i$ 行的影响，可以先计算 $W$ 第 $j$ 列中第 $t$ 个对 $L_i$ 的影响，再把这些影响攀成
+$$
+{\partial L_i(W) \over \partial w_{t,j} } 
+
+=  {
+1 
+\over 
+{\sum\limits_{j=0}^9 e^{X_iW_j}}} 
+\cdot 
+{\partial {\sum\limits_{j=0}^9 e^{X_iW_j}}
+\over 
+\partial w_{t,j} } 
+
+=  {1 \over {\sum\limits_{j=0}^9 e^{X_iW_j}}} \cdot {\partial \ {e^{X_iW_j}}\over \partial w_{t,j} }
+$$
+
+$$
+={1 \over {\sum\limits_{j=0}^9 e^{X_iW_j}}} 
+\cdot 
+{\partial (\ e^{x_{i,1}w_{1,j}} \cdot e^{x_{i,2}w_{2,j}} \cdot  …… \cdot e^{x_{i,t}w_{t,j}} \cdot …… \cdot e^{x_{i,3073}w_{3073,j}})
+\over 
+\partial w_{t,j} }
+$$
+
+$$
+= {1 \over {\sum\limits_{j=0}^9 e^{X_iW_j}}} 
+\cdot 
+
+{\ x_{i,t} \cdot e^{x_{i,1}w_{1,j}} \cdot e^{x_{i,2}w_{2,j}} \cdot  …… \cdot e^{x_{i,t}w_{t,j}} \cdot …… \cdot e^{x_{i,3073}w_{3073,j}}}
+$$
+
+$$
+= \ x_{i,t} \ \cdot {{e^{X_iW_j}} \over {\sum\limits_{j=0}^9 e^{X_iW_j}}}
+$$
+
+$$
+\because
+{\partial L_i(W) \over \partial w_{t,j} } = x_{i,t} \ \cdot {{e^{X_iW_j}} \over {\sum\limits_{j=0}^9 e^{X_iW_j}}}
+$$
+
+$$
+\therefore \nabla_{W_j}\ L_i(W) = X_i^T \ \cdot\ {{e^{X_iW_j}} \over {\sum\limits_{j=0}^9 e^{X_iW_j}}}
+$$
+
+```python
+ else:
+                dW[:, j] +=  X[i].T * (scores[j] / denominator)
+```
+
+
+
+### Vectorized
 
 
 

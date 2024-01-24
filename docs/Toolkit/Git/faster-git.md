@@ -290,3 +290,184 @@ SHA-1 哈希值：校验和
 
 
 ## 第六章 GitFlow工作流实战
+
+
+
+## 第七章 Git提交规范
+
+### Commit Message
+
+```git
+<header>
+<BLANK LINE>
+<body>
+<BLANK LINE>
+<footer>
+```
+
+`<header>`
+
+```
+<type>(<scope>): <short summary>
+```
+
+`<type>`
+
+* build：构建
+* ci：持续集成
+* docs：文档
+* feat：新功能
+* fix：bug修复
+* perf：性能
+* refactor 重构
+* test：测试
+
+`<scope>`
+
+改动的范围
+
+`<summary>`
+
+祈使句、现在时。
+
+`<body>`
+
+更详细的描述，祈使句、现在时。
+
+`<footer>`
+
+可选项，特殊改动
+
+#### 自动化校验
+
+Git Gooks功能
+
+[官方文档](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks)
+
+###  Author & Committer
+
+Author 原始纂写该提交的作者
+
+Committer 应用该提交的人
+
+
+
+### Changed files
+
+```bash
+git diff # 看改动
+git add 
+git status 
+git commit
+```
+
+2 个bug修复分成 2 次提交
+
+经常提交，经常分享
+
+关键分支一定要测试
+
+不提交编译输出，日志，中间产物，用[.gitignore](https://github.com/github/gitignore)略。
+
+不提交密码，删历史记录困难
+
+配置文件用模板放本地
+
+```bash
+git reset <file> # 移除尚未被commit的文件
+git clean -f # 移除未被追踪的中间文件
+git checkout <file> # 回退改动
+```
+
+
+
+### Hash & Parent
+
+```bash
+git rebase -i <commit> # 合并到主分支之前对相关提交进行合并，废弃，修改信息……
+git push -f #覆盖 禁止对主分支用
+git pull --rebase #对本地提交进行更新
+```
+
+
+
+## 第八章 Github/Gitee使用说明
+
+### 仓库介绍
+
+#### Fork
+
+创建仓库副本
+
+#### Watch
+
+邮箱接送仓库推送
+
+#### Issues
+
+议题，仓库内容，bug/feat
+
+#### Pull Request
+
+最主要工作单元
+
+“我修改好了你的代码，现在请求你把代码拉回主仓库中”
+
+#### Action
+
+自动化构建
+
+#### Projects
+
+项目板
+
+#### Wiki
+
+介绍性内容
+
+#### Security
+
+安全
+
+#### Insight
+
+代码贡献
+
+#### discussion
+
+讨论区
+
+#### 提交issue
+
+
+
+### 提交issue
+
+有一些模板
+
+叙述bug的步骤和环境
+
+[How to create a Minimal, Reproducible Example - Help Center - Stack Overflow](https://stackoverflow.com/help/minimal-reproducible-example)
+
+
+
+### 提交PR
+
+fork后修改希望合并到上游仓库
+
+尽量关联Issue
+
+draft PR 
+
+
+
+### 探索Github
+
+[GitHunt – Trending Github Repositories (kamranahmed.info)](https://kamranahmed.info/githunt/)
+
+[键盘快捷方式 - GitHub 文档](https://docs.github.com/zh/get-started/accessibility/keyboard-shortcuts)
+
+
+
+### 高级搜索
+
