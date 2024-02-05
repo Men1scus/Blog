@@ -98,13 +98,9 @@ ${\partial f \over \partial x} = {\partial f \over \partial q} {\partial q \over
 
 ![image-20240118234754222](https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401182347332.png)
 
-
-
-
-
 边是变量值，结点是运算/函数。
 
-最左端各个变量经过每个结点的运算逐步到最右端，每个结点都是运算，都是函数，可求出的偏导，可以理解成每个运算左侧变量对于右侧变量影响的大小，最终想要得知输入变量对于结果变量影响的大小，也就是结果变量对于左侧每个输入变量的偏导。
+最左端各个变量经过每个结点的运算逐步到最右端，每个结点都是运算，都是函数，可求出最后损失函数对此节点的偏导，可以理解成每个运算左侧变量对于右侧变量影响的大小，最终想要得知输入变量对于结果变量影响的大小，也就是结果变量对于左侧每个输入变量的偏导。
 
 运算值经过运算结点从左向右传递，偏导值从输出节点以 1.00 开始向左传递，每次将结点左侧的变量值以 $x$ 代入该结点值的偏导，与右侧偏导相乘，得到结点左侧的偏导。逐层累乘传播偏导，最终传回输入处。
 
@@ -144,7 +140,7 @@ $dW $与 $W$ 的 size 相同
 
 推荐资料
 
-
+[linear-backprop.pdf (stanford.edu)](http://cs231n.stanford.edu/handouts/linear-backprop.pdf)
 
  **Cache forward pass variables**
 
@@ -176,6 +172,8 @@ $W_2$ 模板总的加权和，普遍得分高的那匹马
 
 ## Lecture 5: Convolutional Neural Networks
 
+
+
 传递到每个结点，先进行激活再往后传
 
 $max(0,-)$ 逐元素应用 非线性函数 
@@ -186,17 +184,29 @@ $max(0,-)$ 逐元素应用 非线性函数
 
 ### Convolution  Layer
 
+不拉长，保留原始结构
+
 ![image-20240119155805055](https://cdn.jsdelivr.net/gh/Men1scus/FigureBed@main/img/202401191558211.png)
 
-和图像相同厚度但面积很小的 Filter 在图像上滑动，计算每个位置的dot products 
+和图像相同厚度但面积很小的 Filter 在图像上滑动，计算每个位置的 dot products 
 
-计算方法：将图像的75个点和Filter 的75个点进行对位相乘求和，也就是1 x 75 的矩阵乘75 x 1 的矩阵，得到一个数值。
+计算方法：“element-wise multiplication”	“corresponding point”
+
+将图像的75个点和Filter 的75个点进行对位相乘求和，也就是1 x 75 的矩阵乘75 x 1 的矩阵，得到一个数值。
 
 有多少总 Filters 下一步的输出的层数就是多少
 
 Output size:	${(N - F)\over stride} + 1$
 
+边长会变小，层数通常会增加
+
 Filter aka receptive field
+
+卷积次数越多，features 逐渐从低级到高级
+
+缺点：中间的像素被多个 Filter 所提取，四周的 Filter 被提取的次数少
+
+
 
 ### Pooling layer
 
@@ -204,7 +214,7 @@ Filter aka receptive field
 
 每层进行映射，层数不变，厚度不变
 
-对激活后的层进行将采样
+对激活后的层进行降采样
 
 
 

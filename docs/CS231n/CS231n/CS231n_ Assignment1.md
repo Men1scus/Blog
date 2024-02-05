@@ -254,7 +254,7 @@ $$
 
 ```python
 scores -= correct_class_score
-scores += 1
+scores += 1 
 margin = np.maximum(scores, np.zeros((num_train, num_classes)))
 ```
 
@@ -498,5 +498,97 @@ $$
 
 ### Vectorized
 
+$X$ 和 $W$ 不再逐行逐列的相乘，而是整体相乘得到 分数矩阵 $S$
 
+沿着 `axis = 1` 求取最大值和作为分母的总和
+
+将损失值 $L_i$ 排成一个 [num_train, 1] 的数组，求和即可得到 $L_i$ 
+
+margin 的每个点是
+$$
+e^{s_{i,j}} \over \sum \limits_{j = 0}^9e^{s_{i,j}}
+$$
+
+```python
+margin = np.exp(scores) / np.sum(np.exp(scores), axis=1).reshape(num_train, 1)
+```
+
+由于 $\nabla_{W_{y_i}}\ L_i(W) 
+= 
+X_{i}^T
+\cdot
+( - 1 
++
+{e^{X_iW_{y_i}} 
+\over 
+{\sum\limits_{j=0}^9 e^{X_iW_j}}} ) $ 其中正确的分类还要 $-1 $
+
+```
+margin[np.arange(num_train), list(y)] -= 1;
+```
+
+最后用 $X^T$ 左乘
+
+
+
+## Two Layer Net
+
+仿射
+
+```python
+def affine_forward(x, w, b):
+    out = None
+    out = x.reshape(x.shape[0], -1).dot(w) + b
+    cache = (x, w ,b)
+    return out, cache
+```
+
+后向传播
+
+```python
+def affine_backward(dout, cache):
+    x, w, b = cache
+
+    dx, dw, db = None, None, None
+   
+    dy = dout
+    dw = x.reshape(x.shape[0], -1).T.dot(dy)
+    dx = dy.dot(w.T).reshape(x.shape)
+    db = np.sum(dout, axis=0)
+
+    return dx, dw, db
+```
+
+只返回第一个返回值`out`
+
+```python
+db_num = eval_numerical_gradient_array(lambda b: affine_forward(x, w, b)[0], b, dout)
+```
+
+
+
+```python
+def eval_numerical_gradient_array(f, x, df, h=1e-5):
+    """
+    Evaluate a numeric gradient for a function that accepts a numpy
+    array and returns a numpy array.
+    """
+    grad = np.zeros_like(x)
+
+    it = np.nditer(x, flags=["multi_index"], op_flags=["readwrite"])
+    print(it)
+    while not it.finished:
+        ix = it.multi_index # 依次得到每个元素的多维坐标
+   
+        oldval = x[ix]
+        x[ix] = oldval + h	# 该元素增加一点
+        pos = f(x).copy() # 返回只有 x 中的 ix 位置的元素 +h 后的分数矩阵
+        x[ix] = oldval - h 
+        neg = f(x).copy() # 返回只有 x 中的 ix 位置的元素 -h 后的分数矩阵
+        x[ix] = oldval
+        # 考虑上游梯度 df
+        grad[ix] = np.sum((pos - neg) * df) / (2 * h)
+        it.iternext()
+    return grad
+```
 
